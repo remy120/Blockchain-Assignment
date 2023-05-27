@@ -27,12 +27,9 @@ public class GUI extends Application {
         usernameField = new TextField();
         passwordField = new PasswordField();
         loginButton = new Button("Login");
-        productField = new TextField();
-        insertButton = new Button("Insert");
 
         // Configure event handlers
         loginButton.setOnAction(event -> handleLogin());
-        insertButton.setOnAction(event -> handleInsert());
 
         // Create layout
         VBox root = new VBox(10);
@@ -42,10 +39,7 @@ public class GUI extends Application {
                 usernameField,
                 new Label("Password:"),
                 passwordField,
-                loginButton,
-                new Label("Product:"),
-                productField,
-                insertButton
+                loginButton
         );
 
         // Set up scene and stage
@@ -73,14 +67,6 @@ public class GUI extends Application {
             // Show login error message
             // You can display it in a dialog or label, for example
         }
-    }
-
-    private void handleInsert() {
-        String product = productField.getText();
-        // Handle insertion of data into the blockchain
-        // You can implement the logic to insert the data here
-        // Display success/error message accordingly
-        productField.clear();
     }
 
     private boolean authenticate(String username, String password) {
