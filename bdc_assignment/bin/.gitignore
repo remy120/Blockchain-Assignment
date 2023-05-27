@@ -1,7 +1,8 @@
 /application/
 
-# Eclipse Core      
-.project
-
-# JDT-specific (Eclipse Java Development Tools)     
-.classpath
+Blockchain-Assignment/**/.classpath
+Blockchain-Assignment/**/.project
+Blockchain-Assignment/**/*.class
+Blockchain-Assignment/**/*.png
+Blockchain-Assignment/**/.settings
+Blockchain-Assignment/**/bin
