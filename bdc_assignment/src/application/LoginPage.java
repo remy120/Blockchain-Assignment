@@ -1,6 +1,5 @@
 package application;
 
-import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -10,26 +9,26 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class loginPage extends Application{
+public class LoginPage{
 	private TextField usernameField;
     private PasswordField passwordField;
     private Button loginButton;
-    private TextField productField;
-    private Button insertButton;
+    private Button backButton;
 
-    public static void main(String[] args) {
-        launch(args);
-    }
-
-    @Override
-    public void start(Stage primaryStage) {
+    public void display() {
+    	Stage loginPage = new Stage();
+    	
         // Create GUI components
         usernameField = new TextField();
         passwordField = new PasswordField();
         loginButton = new Button("Login");
+        backButton = new Button("Back");
 
         // Configure event handlers
         loginButton.setOnAction(event -> handleLogin());
+        backButton.setOnAction(event -> {
+        	loginPage.close();
+        });
 
         // Create layout
         VBox root = new VBox(10);
@@ -39,14 +38,15 @@ public class loginPage extends Application{
                 usernameField,
                 new Label("Password:"),
                 passwordField,
-                loginButton
+                loginButton,
+                backButton
         );
 
         // Set up scene and stage
         Scene scene = new Scene(root, 300, 200);
-        primaryStage.setTitle("Engine Oil Supply Chain");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        loginPage.setTitle("Login");
+        loginPage.setScene(scene);
+        loginPage.show();
     }
 
     private void handleLogin() {
@@ -55,15 +55,11 @@ public class loginPage extends Application{
         // Perform login authentication logic here
         // You can use a database or hardcoded credentials for simplicity
         if (authenticate(username, password)) {
-            // Enable data insertion fields/buttons
-            productField.setDisable(false);
-            insertButton.setDisable(false);
+
         } else {
             // Clear fields and show error message
             usernameField.clear();
             passwordField.clear();
-            productField.setDisable(true);
-            insertButton.setDisable(true);
             // Show login error message
             // You can display it in a dialog or label, for example
         }
